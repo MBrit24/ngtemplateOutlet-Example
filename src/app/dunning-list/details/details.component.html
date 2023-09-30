@@ -1,0 +1,24 @@
+<p>details works!</p>
+<table>
+  <thead>
+    <tr>
+      <ng-container
+        *ngTemplateOutlet="headerDetail || defaultHeaderTemplate"
+      ></ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <ng-container
+        *ngTemplateOutlet="rowsDetail || defaultRowTemplate"
+      ></ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Template by default-->
+<ng-template #defaultHeaderTemplate>
+  Header Details, ca fonctionne pas
+</ng-template>
+
+<ng-template #defaultRowTemplate> Row Details, ca fonctionne pas </ng-template>

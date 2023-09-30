@@ -1,0 +1,36 @@
+<p>
+  dunning-list works!
+  <app-card>
+    <ng-template #card>
+      <section class="head">
+        <div class="code">Andpa</div>
+        <div class="adress">4 Pl. Jussieu, <br />75005 Paris</div>
+      </section>
+
+      <section class="body">
+        <div class="company">Zneg</div>
+        <div class="levelDunning">Niveau Relance: 1</div>
+        <div class="invoiceUnpaidCount">3 facture</div>
+        <div class="amountDunning">Montant à relancer: 1</div>
+      </section>
+
+      <button type="button" class="chevrons">BUTTON</button>
+    </ng-template>
+  </app-card>
+  <app-details>
+    <ng-template #headerDetail>
+      <th></th>
+      <th>Facture</th>
+      <th>Date</th>
+      <th>Montant</th>
+      <th>Restant du</th>
+    </ng-template>
+    <ng-template #rowsDetail>
+      <td></td>
+      <td>202300001</td>
+      <td>11/08/2023</td>
+      <td>13000</td>
+      <td>1500</td>
+    </ng-template>
+  </app-details>
+</p>
