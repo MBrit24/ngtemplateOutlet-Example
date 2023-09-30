@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { DetailsComponent } from './details/details.component';
@@ -7,7 +8,7 @@ import { DetailsComponent } from './details/details.component';
   templateUrl: './dunning-list.component.html',
   styleUrls: ['./dunning-list.component.css'],
   standalone: true,
-  imports: [CardComponent, DetailsComponent],
+  imports: [CommonModule, CardComponent, DetailsComponent],
 })
 export class DunningListComponent implements OnInit {
   private dunningDetails1_Invoice1 = {
@@ -46,8 +47,9 @@ export class DunningListComponent implements OnInit {
 
   public dunnings = [
     {
+      //id: '0', // TODO: existe pas normalement pas cool ca
       code: 'ANDPA',
-      adress: '4 Pl. Jussieu<br/> 75005 Paris',
+      adress: '4 Pl. Jussieu 75005 Paris',
       company: 'Zneg',
       level: 1,
       invoiceUnpaidCount: 3,
@@ -59,6 +61,7 @@ export class DunningListComponent implements OnInit {
       ],
     },
     {
+      // id: '1',
       code: 'ANDPA',
       company: 'Zneg',
       level: 2,
@@ -67,6 +70,33 @@ export class DunningListComponent implements OnInit {
       details: [this.dunningDetails1_Invoice2, this.dunningDetails2_Invoice2],
     },
   ];
+
+  /* 
+  public isActiveDetailsMap = new Map<string, boolean>([
+    ['0', true],
+    ['1', true],
+  ]);
+  */
+  /* 
+  public activeDetails(cardNumber: string): void {
+    this.isActiveDetailsMap.set(
+      cardNumber,
+      !this.isActiveDetailsMap.get(cardNumber)
+    );
+  }
+  */
+
+  public isActiveDetailsMap = new Map<number, boolean>([
+    [0, true],
+    [1, true],
+  ]);
+
+  public activeDetails(cardNumber: number): void {
+    this.isActiveDetailsMap.set(
+      cardNumber,
+      !this.isActiveDetailsMap.get(cardNumber)
+    );
+  }
 
   constructor() {}
   ngOnInit() {}

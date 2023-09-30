@@ -1,6 +1,6 @@
 <p>dunning-list works!</p>
 <app-card [data]="dunnings">
-  <ng-template #card let-card>
+  <ng-template #card let-card let-id="index">
     <section class="head">
       <div class="code">{{ card.code }}</div>
       <div class="adress">{{ card.adress }}</div>
@@ -12,23 +12,34 @@
       <div class="invoiceUnpaidCount">{{ card.invoiceUnpaidCount }}</div>
       <div class="amountDunning">{{ card.amountDunning }}</div>
     </section>
-
-    <button type="button" class="chevrons">BUTTON</button>
-    <app-details [data]="card.details">
-      <ng-template #headerDetail>
-        <th></th>
-        <th>Facture</th>
-        <th>Date</th>
-        <th>Montant</th>
-        <th>Restant du</th>
-      </ng-template>
-      <ng-template #rowsDetail let-row>
-        <td></td>
-        <td>{{ row.invoiceNumber }}</td>
-        <td>{{ row.date }}</td>
-        <td>{{ row.amount }}</td>
-        <td>{{ row.rest }}</td>
-      </ng-template>
-    </app-details>
+    <p>Nb details :{{ card?.details?.length | json }}</p>
+    <button
+      *ngIf="card?.details.length > 0"
+      type="button"
+      class="chevrons"
+      (click)="activeDetails(id)"
+    >
+      BUTTON
+    </button>
+    <ng-container
+      *ngIf="isActiveDetailsMap.get(id) && card?.details?.length > 0"
+    >
+      <app-details [data]="card.details">
+        <ng-template #headerDetail>
+          <th></th>
+          <th>Facture</th>
+          <th>Date</th>
+          <th>Montant</th>
+          <th>Restant du</th>
+        </ng-template>
+        <ng-template #rowsDetail let-row>
+          <td></td>
+          <td>{{ row.invoiceNumber }}</td>
+          <td>{{ row.date }}</td>
+          <td>{{ row.amount }}</td>
+          <td>{{ row.rest }}</td>
+        </ng-template>
+      </app-details>
+    </ng-container>
   </ng-template>
 </app-card>

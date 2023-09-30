@@ -1,13 +1,14 @@
 <p>card works!</p>
 
 <br />
-<div *ngFor="let cardRow of data">
+<div *ngFor="let cardRow of data; index as i">
   <ng-container
     *ngTemplateOutlet="
       card || defaultCardTemplate;
-      context: { $implicit: cardRow }
+      context: { $implicit: cardRow, index: i }
     "
   ></ng-container>
+  <hr />
 </div>
 <!-- <ng-container *ngTemplateOutlet="details"></ng-container>-->
 
