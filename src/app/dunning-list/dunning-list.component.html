@@ -1,36 +1,34 @@
-<p>
-  dunning-list works!
-  <app-card>
-    <ng-template #card>
-      <section class="head">
-        <div class="code">Andpa</div>
-        <div class="adress">4 Pl. Jussieu, <br />75005 Paris</div>
-      </section>
+<p>dunning-list works!</p>
+<app-card [data]="dunnings">
+  <ng-template #card let-card>
+    <section class="head">
+      <div class="code">{{ card.code }}</div>
+      <div class="adress">{{ card.adress }}</div>
+    </section>
 
-      <section class="body">
-        <div class="company">Zneg</div>
-        <div class="levelDunning">Niveau Relance: 1</div>
-        <div class="invoiceUnpaidCount">3 facture</div>
-        <div class="amountDunning">Montant à relancer: 1</div>
-      </section>
+    <section class="body">
+      <div class="company">{{ card.company }}</div>
+      <div class="levelDunning">{{ card.level }}</div>
+      <div class="invoiceUnpaidCount">{{ card.invoiceUnpaidCount }}</div>
+      <div class="amountDunning">{{ card.amountDunning }}</div>
+    </section>
 
-      <button type="button" class="chevrons">BUTTON</button>
-    </ng-template>
-  </app-card>
-  <app-details>
-    <ng-template #headerDetail>
-      <th></th>
-      <th>Facture</th>
-      <th>Date</th>
-      <th>Montant</th>
-      <th>Restant du</th>
-    </ng-template>
-    <ng-template #rowsDetail>
-      <td></td>
-      <td>202300001</td>
-      <td>11/08/2023</td>
-      <td>13000</td>
-      <td>1500</td>
-    </ng-template>
-  </app-details>
-</p>
+    <button type="button" class="chevrons">BUTTON</button>
+    <app-details [data]="card.details">
+      <ng-template #headerDetail>
+        <th></th>
+        <th>Facture</th>
+        <th>Date</th>
+        <th>Montant</th>
+        <th>Restant du</th>
+      </ng-template>
+      <ng-template #rowsDetail let-row>
+        <td></td>
+        <td>{{ row.invoiceNumber }}</td>
+        <td>{{ row.date }}</td>
+        <td>{{ row.amount }}</td>
+        <td>{{ row.rest }}</td>
+      </ng-template>
+    </app-details>
+  </ng-template>
+</app-card>

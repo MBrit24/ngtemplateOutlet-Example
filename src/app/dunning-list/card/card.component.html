@@ -1,8 +1,14 @@
-<p>
-  card works!
-  <br />
+<p>card works!</p>
 
-  <ng-container [ngTemplateOutlet]="card || defaultCardTemplate"></ng-container>
+<br />
+<div *ngFor="let cardRow of data">
+  <ng-container
+    *ngTemplateOutlet="
+      card || defaultCardTemplate;
+      context: { $implicit: cardRow }
+    "
+  ></ng-container>
+</div>
+<!-- <ng-container *ngTemplateOutlet="details"></ng-container>-->
 
-  <ng-template #defaultCardTemplate>Card, ca fonctionne pas </ng-template>
-</p>
+<ng-template #defaultCardTemplate>Card, ca fonctionne pas </ng-template>

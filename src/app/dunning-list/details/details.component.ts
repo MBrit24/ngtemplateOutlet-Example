@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  Input,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -11,8 +17,11 @@ import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
 export class DetailsComponent implements OnInit {
   @ContentChild('headerDetail') headerDetail: TemplateRef<unknown> | undefined;
   @ContentChild('rowsDetail') rowsDetail: TemplateRef<unknown> | undefined;
+  @Input() data!: unknown[];
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('data :', this.data);
+  }
 }
